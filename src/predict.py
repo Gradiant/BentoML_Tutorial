@@ -4,7 +4,7 @@ from loguru import logger
 @logger.catch(reraise=True)
 def predict():
     
-    patient_data=[0.0, 0.0, 0.0, 0.0]
+    patient_data=[0.7, 1.0, 5.5, 0.6]
 
     logger.info("Sending patient data to BentoML service")
 
