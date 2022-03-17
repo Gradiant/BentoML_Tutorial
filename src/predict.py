@@ -1,4 +1,5 @@
 import requests
+import numpy as np
 from loguru import logger
 
 @logger.catch(reraise=True)
@@ -13,7 +14,11 @@ def predict():
         headers={"content-type": "application/json"},
         data=str(patient_data)).text
     
-    logger.info(f"Prediction: Patient data classified into class {response}")
+    response=np.fromstring(response.replace("[","").replace("]",""), dtype=float, sep=',')
+
+    response = {k:v for k, v in enumerate(response)}
+    for k, v in response.items():
+        logger.info(f"Patient data belongs to class {k} with {round(100*v, 2)}% probability")
 
 if __name__ == "__main__":
 
