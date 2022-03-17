@@ -29,7 +29,7 @@ def train():
     plot_dataset(X_train, X_test, y_train, y_test)
 
     logger.info("Trainning")
-    model = SVC(kernel='linear')
+    model = SVC(kernel='linear', probability=True)
     model = model.fit(X_train, y_train)
 
     logger.info("Showing train boundaries")

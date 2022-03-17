@@ -7,7 +7,7 @@ model_name="tutorial_svm"
 model_version="latest"
 service_name="bentoml_tutorial"
 
-model = bentoml.sklearn.load_runner(f"{model_name}:{model_version}")
+model = bentoml.sklearn.load_runner(f"{model_name}:{model_version}", function_name="predict_proba")
 
 clf = bentoml.Service(service_name, runners=[model])
 
